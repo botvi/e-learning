@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('hasil_ujians', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ujian_id')->constrained('ujians');
-            $table->foreignId('siswa_id')->constrained('siswas');
+            $table->foreignId('ujian_id')->constrained('ujians')->onDelete('cascade');
+            $table->foreignId('siswa_id')->constrained('siswas')->onDelete('cascade');
+            $table->foreignId('guru_id')->constrained('gurus')->onDelete('cascade');
             $table->integer('total_soal');
             $table->integer('benar');
             $table->integer('salah');

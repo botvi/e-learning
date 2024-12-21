@@ -37,8 +37,15 @@
                                 <label for="nama_pelajaran" class="form-label">Nama Pelajaran</label>
                                 <input type="text" class="form-control" id="nama_pelajaran" name="nama_pelajaran" required>
                             </div>
-                            
-                            
+                            <div class="col-md-12">
+                                <label for="guru_id" class="form-label">Guru Pengajar</label>
+                                <select name="guru_id" id="guru_id" class="form-control">
+                                    <option value="">Pilih Guru</option>
+                                    @foreach ($gurus as $guru)
+                                        <option value="{{ $guru->id }}">{{ $guru->nama }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary px-5">Simpan</button>

@@ -5,27 +5,35 @@ namespace App\Http\Controllers;
 use App\Models\Ujian;
 use App\Models\MataPelajaran;
 use App\Models\Kelas;
+use App\Models\Guru;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
 
 class UjianController extends Controller
 {
     public function index()
     {
-        $ujians = Ujian::with('mataPelajaran')->orderBy('created_at', 'desc')->get();
+        $user = Auth::user();
+        $guru = Guru::where('user_id', $user->id)->first();
+        $ujians = Ujian::where('guru_id', $guru->id)->orderBy('created_at', 'desc')->get();
 
         return view('pageadmin.ujian.index', compact('ujians'));
     }
 
     public function create()
     {
-        $mataPelajarans = MataPelajaran::all();
+        $user = Auth::user();
+        $guru = Guru::where('user_id', $user->id)->first();
+        $mataPelajarans = MataPelajaran::where('guru_id', $guru->id)->get();
         $kelas = Kelas::all();  
         return view('pageadmin.ujian.create', compact('mataPelajarans', 'kelas'));
     }
 
     public function store(Request $request)
     {
+        $user = Auth::user();
+        $guru = Guru::where('user_id', $user->id)->first();
         $validated = $request->validate([
             'mata_pelajaran_id' => 'required|exists:mata_pelajarans,id',
             'kelas_id' => 'required|exists:kelas,id',
@@ -73,6 +81,7 @@ class UjianController extends Controller
         $ujian = Ujian::create([
             'mata_pelajaran_id' => $validated['mata_pelajaran_id'],
             'kelas_id' => $validated['kelas_id'],
+            'guru_id' => $guru->id,
             'kode_ujian' => $validated['kode_ujian'],
             'nama_ujian' => $validated['nama_ujian'],
             'tanggal_ujian' => $validated['tanggal_ujian'],
@@ -91,14 +100,18 @@ class UjianController extends Controller
 
     public function edit($id)
     {
-        $ujian = Ujian::find($id);
-        $mataPelajarans = MataPelajaran::all();
+        $user = Auth::user();
+        $guru = Guru::where('user_id', $user->id)->first();
+        $mataPelajarans = MataPelajaran::where('guru_id', $guru->id)->get();
         $kelas = Kelas::all();
+        $ujian = Ujian::find($id);
         return view('pageadmin.ujian.edit', compact('ujian', 'mataPelajarans', 'kelas'));
     }
 
     public function update(Request $request, $id)
     {
+        $user = Auth::user();
+        $guru = Guru::where('user_id', $user->id)->first();
         $ujian = Ujian::findOrFail($id);
     
         // Validation rules
@@ -155,6 +168,7 @@ class UjianController extends Controller
         $ujian->update([
             'mata_pelajaran_id' => $validated['mata_pelajaran_id'],
             'kelas_id' => $validated['kelas_id'],
+            'guru_id' => $guru->id,
             'kode_ujian' => $validated['kode_ujian'],
             'nama_ujian' => $validated['nama_ujian'],
             'tanggal_ujian' => $validated['tanggal_ujian'],

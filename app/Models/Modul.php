@@ -9,7 +9,7 @@ class Modul extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['mata_pelajaran_id', 'kelas_id', 'nama_modul', 'kode_modul', 'deskripsi', 'file'];
+    protected $fillable = ['mata_pelajaran_id', 'kelas_id', 'guru_id', 'nama_modul', 'kode_modul', 'deskripsi', 'file'];
 
     public function mata_pelajaran()
     {
@@ -19,5 +19,10 @@ class Modul extends Model
     public function kelas()
     {
         return $this->belongsTo(Kelas::class);
+    }
+
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class);
     }
 }

@@ -10,5 +10,10 @@ class MataPelajaran extends Model
     use HasFactory;
 
     protected $table = 'mata_pelajarans';
-    protected $fillable = ['kode_pelajaran', 'nama_pelajaran'];
+    protected $fillable = ['kode_pelajaran', 'nama_pelajaran', 'guru_id'];
+
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class);
+    }
 }

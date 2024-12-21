@@ -41,6 +41,7 @@
                                     <th>#</th>
                                     <th>Nama Siswa</th>
                                     <th>Mata Pelajaran</th>
+                                    <th>Nama Guru</th>
                                     <th>Kelas</th>
                                     <th>Total Soal</th>
                                     <th>Jawaban Benar</th>
@@ -54,6 +55,7 @@
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $hasil->siswa->nama }}</td>
                                         <td>{{ $hasil->ujian->mataPelajaran->nama_pelajaran }}</td>
+                                        <td>{{ $hasil->guru->nama }}</td>
                                         <td>{{ $hasil->ujian->kelas->nama_kelas }}</td>
                                         <td><span class="badge bg-primary">{{ $hasil->total_soal }}</span></td>
                                         <td><span class="badge bg-success">{{ $hasil->benar }}</span></td>

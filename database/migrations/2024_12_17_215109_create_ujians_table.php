@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('ujians', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('mata_pelajaran_id')->constrained('mata_pelajarans');
-            $table->foreignId('kelas_id')->constrained('kelas');
+            $table->foreignId('mata_pelajaran_id')->constrained('mata_pelajarans')->onDelete('cascade');
+            $table->foreignId('kelas_id')->constrained('kelas')->onDelete('cascade');
+            $table->foreignId('guru_id')->constrained('gurus')->onDelete('cascade');
             $table->string('kode_ujian');
             $table->string('nama_ujian');
             $table->date('tanggal_ujian');

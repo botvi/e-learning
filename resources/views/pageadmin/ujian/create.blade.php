@@ -115,7 +115,7 @@
                     <span class="text-danger">Gambar tidak wajib *</span>
                     <input type="file" name="soal[${soalIndex}][gambar]" class="form-control mb-2">
                     <span class="text-muted">Soal</span>
-                    <input type="text" name="soal[${soalIndex}][pertanyaan]" class="form-control" required>
+                    <textarea name="soal[${soalIndex}][pertanyaan]" class="form-control" required></textarea>
                 </div>
                 <div class="mb-2">
                     <label class="form-label">Pilihan</label>

@@ -5,26 +5,34 @@ namespace App\Http\Controllers;
 use App\Models\Modul;
 use App\Models\MataPelajaran;
 use App\Models\Kelas;
+use App\Models\Guru;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class ModulController extends Controller
 {
     public function index()
     {
-        $moduls = Modul::with('mata_pelajaran', 'kelas')->get();
+        $user = Auth::user();
+        $guru = Guru::where('user_id', $user->id)->first();
+        $moduls = Modul::where('guru_id', $guru->id)->get();
         return view('pageadmin.modul.index', compact('moduls'));
     }
 
     public function create()
     {
-        $mataPelajarans = MataPelajaran::all();
+        $user = Auth::user();
+        $guru = Guru::where('user_id', $user->id)->first();
+
+        $mataPelajarans = MataPelajaran::where('guru_id', $guru->id)->get();
         $kelas = Kelas::all();
-        return view('pageadmin.modul.create', compact('mataPelajarans', 'kelas'));
+        return view('pageadmin.modul.create', compact('mataPelajarans', 'kelas', 'user'));
     }
 
     public function store(Request $request)
     {
+        $user = Auth::user();
+        $guru = Guru::where('user_id', $user->id)->first();
         $request->validate([
             'mata_pelajaran_id' => 'required',
             'kelas_id' => 'required',
@@ -46,6 +54,7 @@ class ModulController extends Controller
         Modul::create([
             'mata_pelajaran_id' => $request->mata_pelajaran_id,
             'kelas_id' => $request->kelas_id,
+            'guru_id' => $guru->id,
             'nama_modul' => $request->nama_modul,
             'kode_modul' => $request->kode_modul,
             'deskripsi' => $request->deskripsi,
@@ -58,13 +67,17 @@ class ModulController extends Controller
 
     public function edit($id)
     {
-        $modul = Modul::find($id);
-        $mataPelajarans = MataPelajaran::all();
+        $user = Auth::user();
+        $guru = Guru::where('user_id', $user->id)->first();
+        $mataPelajarans = MataPelajaran::where('guru_id', $guru->id)->get();
         $kelas = Kelas::all();
+        $modul = Modul::find($id);
         return view('pageadmin.modul.edit', compact('modul', 'mataPelajarans', 'kelas'));
     }
     public function update(Request $request, $id)
     {
+        $user = Auth::user();
+        $guru = Guru::where('user_id', $user->id)->first();
         $request->validate([
             'mata_pelajaran_id' => 'required',
             'kelas_id' => 'required',
@@ -97,6 +110,7 @@ class ModulController extends Controller
         $modul->update([
             'mata_pelajaran_id' => $request->mata_pelajaran_id,
             'kelas_id' => $request->kelas_id,
+            'guru_id' => $guru->id,
             'nama_modul' => $request->nama_modul,
             'kode_modul' => $request->kode_modul,
             'deskripsi' => $request->deskripsi,

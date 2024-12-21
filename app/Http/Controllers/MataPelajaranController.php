@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MataPelajaran;
+use App\Models\Guru;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,8 @@ class MataPelajaranController extends Controller
 
     public function create()
     {
-        return view('pageadmin.mata_pelajarans.create');
+        $gurus = Guru::all();
+        return view('pageadmin.mata_pelajarans.create', compact('gurus'));
     }
 
     public function store(Request $request)
@@ -24,6 +26,7 @@ class MataPelajaranController extends Controller
         $request->validate([
             'kode_pelajaran' => 'required|string|max:255|unique:mata_pelajarans,kode_pelajaran',
             'nama_pelajaran' => 'required|string|max:255',
+            'guru_id' => 'required|exists:gurus,id',
         ]);
 
         MataPelajaran::create($request->all());
@@ -34,7 +37,8 @@ class MataPelajaranController extends Controller
     public function edit($id)
     {
         $mataPelajaran = MataPelajaran::find($id);
-        return view('pageadmin.mata_pelajarans.edit', compact('mataPelajaran'));
+        $gurus = Guru::all();
+        return view('pageadmin.mata_pelajarans.edit', compact('mataPelajaran', 'gurus'));
     }
 
     public function update(Request $request, $id)
@@ -42,6 +46,7 @@ class MataPelajaranController extends Controller
         $request->validate([
             'kode_pelajaran' => 'required|string|max:255|unique:mata_pelajarans,kode_pelajaran,' . $id,
             'nama_pelajaran' => 'required|string|max:255',
+            'guru_id' => 'required|exists:gurus,id',
         ]);
 
         $mataPelajaran = MataPelajaran::find($id);

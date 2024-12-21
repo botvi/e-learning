@@ -47,7 +47,8 @@ class WebUjianController extends Controller
     
         $jawabanUser = $request->jawaban;
         $kunciJawaban = $request->kunci_jawaban;
-    
+        $guruId = $request->guru_id;
+
         $totalSoal = count($kunciJawaban); // Hitung jumlah total soal
         $benar = 0;
         $salah = 0;
@@ -69,6 +70,7 @@ class WebUjianController extends Controller
         $hasilUjian = new HasilUjian([
             'ujian_id' => $ujian->id,
             'siswa_id' => $siswa->id,
+            'guru_id' => $guruId,
             'total_soal' => $totalSoal, // Simpan total soal
             'benar' => $benar,
             'salah' => $salah,

@@ -40,6 +40,9 @@ class LoginController extends Controller
             } elseif ($user->role == 'siswa') {
                 Alert::success('Login Successful', 'Welcome back, Siswa!');
                 return redirect()->route('web.index');
+            } elseif ($user->role == 'guru') {
+                Alert::success('Login Successful', 'Welcome back, Guru!');
+                return redirect()->route('admin.dashboard');
             } else {
                 // Logout jika peran tidak sesuai
                 Auth::logout();

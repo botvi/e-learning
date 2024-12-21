@@ -36,7 +36,8 @@
                 <form action="{{ route('web.simpanHasilUjian') }}" method="POST">
                     @csrf
                     <input type="hidden" name="ujian_id" value="{{ $ujian->id }}">
-                
+                    <input type="hidden" name="guru_id" value="{{ $ujian->guru_id }}">
+
                     @php
                         $shuffledSoal = $soal;
                         shuffle($shuffledSoal);

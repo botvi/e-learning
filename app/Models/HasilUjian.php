@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class HasilUjian extends Model
 {
     use HasFactory;
-    protected $fillable = ['ujian_id', 'siswa_id', 'total_soal', 'benar', 'salah'];
+    protected $fillable = ['ujian_id', 'siswa_id', 'guru_id', 'total_soal', 'benar', 'salah'];
 
     public function ujian()
     {
@@ -23,6 +23,11 @@ class HasilUjian extends Model
     public function mataPelajaran()
     {
         return $this->belongsTo(MataPelajaran::class);
+    }
+
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class);
     }
 }
     

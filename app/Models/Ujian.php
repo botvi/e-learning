@@ -9,7 +9,7 @@ class Ujian extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['mata_pelajaran_id', 'kelas_id', 'kode_ujian', 'nama_ujian', 'tanggal_ujian', 'waktu_mulai', 'waktu_selesai', 'durasi', 'soal', 'status'];
+    protected $fillable = ['mata_pelajaran_id', 'kelas_id', 'guru_id', 'kode_ujian', 'nama_ujian', 'tanggal_ujian', 'waktu_mulai', 'waktu_selesai', 'durasi', 'soal', 'status'];
     protected $casts = [
         'soal' => 'array',
     ];
@@ -22,5 +22,10 @@ class Ujian extends Model
     public function kelas()
     {
         return $this->belongsTo(Kelas::class);
+    }
+
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class);
     }
 }

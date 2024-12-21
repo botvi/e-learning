@@ -15,7 +15,8 @@ use App\Http\Controllers\{
     WebModulController,
     WebUjianController,
     WebHasilUjianController,
-    HasilUjianController
+    HasilUjianController,
+    GuruController
 };
 
 Route::get('/run-admin', function () {
@@ -42,10 +43,10 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
 
 Route::group(['middleware' => ['role:admin']], function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::get('/siswa', [SiswaController::class, 'index'])->name('siswas.index');
     Route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswas.create');
@@ -53,6 +54,13 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/siswa/edit/{id}', [SiswaController::class, 'edit'])->name('siswas.edit');
     Route::put('/siswa/update/{id}', [SiswaController::class, 'update'])->name('siswas.update');
     Route::delete('/siswa/delete/{id}', [SiswaController::class, 'destroy'])->name('siswas.destroy');
+
+    Route::get('/guru', [GuruController::class, 'index'])->name('gurus.index');
+    Route::get('/guru/create', [GuruController::class, 'create'])->name('gurus.create');
+    Route::post('/guru/store', [GuruController::class, 'store'])->name('gurus.store');
+    Route::get('/guru/edit/{id}', [GuruController::class, 'edit'])->name('gurus.edit');
+    Route::put('/guru/update/{id}', [GuruController::class, 'update'])->name('gurus.update');
+    Route::delete('/guru/delete/{id}', [GuruController::class, 'destroy'])->name('gurus.destroy');
 
     Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');
     Route::get('/kelas/create', [KelasController::class, 'create'])->name('kelas.create');
@@ -67,7 +75,19 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/mata_pelajaran/edit/{id}', [MataPelajaranController::class, 'edit'])->name('mata_pelajarans.edit');
     Route::put('/mata_pelajaran/update/{id}', [MataPelajaranController::class, 'update'])->name('mata_pelajarans.update');
     Route::delete('/mata_pelajaran/delete/{id}', [MataPelajaranController::class, 'destroy'])->name('mata_pelajarans.destroy');
+});
 
+Route::get('/', [WebController::class, 'index'])->name('web.index');
+Route::get('/siswa/modul', [WebModulController::class, 'index'])->name('web.modul');
+Route::get('/siswa/ujian', [WebUjianController::class, 'index'])->name('web.ujian');
+Route::get('/siswa/ujian/mulai/{id}', [WebUjianController::class, 'mulaiUjian'])->name('web.ujianMulai');
+Route::post('/siswa/ujian/simpan-hasil', [WebUjianController::class, 'simpanHasilUjian'])->name('web.simpanHasilUjian');
+Route::get('/siswa/hasil-ujian', [WebHasilUjianController::class, 'index'])->name('web.hasilUjian');
+
+
+
+
+Route::group(['middleware' => ['role:guru']], function () {
     Route::get('/master_modul', [ModulController::class, 'index'])->name('modul.index');
     Route::get('/master_modul/create', [ModulController::class, 'create'])->name('modul.create');
     Route::post('/master_modul/store', [ModulController::class, 'store'])->name('modul.store');
@@ -86,10 +106,3 @@ Route::group(['middleware' => ['role:admin']], function () {
 
     Route::get('/hasil_ujian', [HasilUjianController::class, 'index'])->name('hasilUjian.index');
 });
-
-Route::get('/', [WebController::class, 'index'])->name('web.index');
-Route::get('/siswa/modul', [WebModulController::class, 'index'])->name('web.modul');
-Route::get('/siswa/ujian', [WebUjianController::class, 'index'])->name('web.ujian');
-Route::get('/siswa/ujian/mulai/{id}', [WebUjianController::class, 'mulaiUjian'])->name('web.ujianMulai');
-Route::post('/siswa/ujian/simpan-hasil', [WebUjianController::class, 'simpanHasilUjian'])->name('web.simpanHasilUjian');
-Route::get('/siswa/hasil-ujian', [WebHasilUjianController::class, 'index'])->name('web.hasilUjian');

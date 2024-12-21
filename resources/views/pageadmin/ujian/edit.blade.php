@@ -109,8 +109,8 @@
                                                     <input type="file" name="soal[{{ $index }}][gambar]"
                                                         class="form-control mb-2">
                                                     <span class="text-muted">Soal</span>
-                                                    <input type="text" name="soal[{{ $index }}][pertanyaan]"
-                                                        class="form-control" value="{{ $soal['pertanyaan'] }}" required>
+                                                    <textarea name="soal[{{ $index }}][pertanyaan]" class="form-control"
+                                                        required>{{ $soal['pertanyaan'] }}</textarea>
                                                 </div>
                                                 <div class="mb-2">
                                                     <label class="form-label">Pilihan</label>
@@ -172,7 +172,7 @@
                     <span class="text-muted">Gambar</span>
                     <input type="file" name="soal[${soalIndex}][gambar]" class="form-control mb-2">
                     <span class="text-muted">Soal</span>
-                    <input type="text" name="soal[${soalIndex}][pertanyaan]" class="form-control" required>
+                    <textarea name="soal[${soalIndex}][pertanyaan]" class="form-control" required></textarea>
                 </div>
                 <div class="mb-2">
                     <label class="form-label">Pilihan</label>

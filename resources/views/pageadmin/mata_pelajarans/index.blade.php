@@ -28,6 +28,7 @@
                                 <th>No</th>
                                 <th>Kode Pelajaran</th>
                                 <th>Nama Pelajaran</th>
+                                <th>Guru Pengajar</th>
                                 <th>Aksi</th>
                               
                             </tr>
@@ -38,7 +39,7 @@
                                 <td>{{ $index + 1 }}</td>
                                 <td>{{ $mp->kode_pelajaran }}</td>
                                 <td>{{ $mp->nama_pelajaran }}</td>
-                              
+                                <td>{{ $mp->guru->nama }}</td>
                                 <td>
                                     <a href="{{ route('mata_pelajarans.edit', $mp->id) }}" class="btn btn-sm btn-warning">Edit</a>
                                     <form action="{{ route('mata_pelajarans.destroy', $mp->id) }}" method="POST" style="display:inline;" class="delete-form">
@@ -55,6 +56,7 @@
                                 <th>No</th>
                                 <th>Kode Pelajaran</th>
                                 <th>Nama Pelajaran</th>
+                                <th>Guru Pengajar</th>
                                 <th>Aksi</th>
                             </tr>
                         </tfoot>
