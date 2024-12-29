@@ -10,7 +10,8 @@
                     <div class="row d-flex justify-content-center text-center">
                         <div class="col-lg-8">
                             <h1>E-Learning</h1>
-                            <p class="mb-0">E-Learning adalah aplikasi atau platform yang dirancang untuk membantu proses ujian secara online.</p>
+                            <p class="mb-0">E-Learning adalah aplikasi atau platform yang dirancang untuk membantu proses
+                                ujian secara online.</p>
                         </div>
                     </div>
                 </div>
@@ -25,51 +26,56 @@
             </nav>
         </div><!-- End Page Title -->
 
-          <!-- About Section -->
-    <section id="about" class="about section">
+        <!-- About Section -->
+        <section class="about section" id="about">
 
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>About Us<br></h2>
-          <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-        </div><!-- End Section Title -->
-  
-        <div class="container">
-  
-          <div class="row gy-4">
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-              <h3>Voluptatem dignissimos provident laboris nisi ut aliquip ex ea commodo</h3>
-              <img src="{{ asset('web') }}/assets/img/about.jpg" class="img-fluid rounded-4 mb-4" alt="">
-              <p>Ut fugiat ut sunt quia veniam. Voluptate perferendis perspiciatis quod nisi et. Placeat debitis quia recusandae odit et consequatur voluptatem. Dignissimos pariatur consectetur fugiat voluptas ea.</p>
-              <p>Temporibus nihil enim deserunt sed ea. Provident sit expedita aut cupiditate nihil vitae quo officia vel. Blanditiis eligendi possimus et in cum. Quidem eos ut sint rem veniam qui. Ut ut repellendus nobis tempore doloribus debitis explicabo similique sit. Accusantium sed ut omnis beatae neque deleniti repellendus.</p>
-            </div>
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="250">
-              <div class="content ps-0 ps-lg-5">
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
-                <ul>
-                  <li><i class="bi bi-check-circle-fill"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                  <li><i class="bi bi-check-circle-fill"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                  <li><i class="bi bi-check-circle-fill"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
-                </ul>
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>TENTANG<br></h2>
                 <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
+                    Tentang SMP N 3 INUMAN
                 </p>
-  
-                <div class="position-relative mt-4">
-                  <img src="{{ asset('web') }}/assets/img/about-2.jpg" class="img-fluid rounded-4" alt="">
-                  <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
+            </div><!-- End Section Title -->
+
+            <div class="container">
+
+                <div class="row gy-4">
+                    <div class="col-lg-6" data-aos-delay="100" data-aos="fade-up">
+                        <h3>
+                            E-Learning
+                        </h3>
+                        <img alt="" class="img-fluid rounded-4 mb-4" src="{{ asset('foto1.jpeg') }}">
+                        <p>
+                            E-Learning adalah aplikasi atau platform yang dirancang untuk membantu proses ujian secara
+                            online. E-Learning ini sangat membantu dalam proses belajar mengajar di masa pandemi ini.
+                        </p>
+                        <p>
+                            E-Learning ini sangat membantu dalam proses belajar mengajar di masa pandemi ini. E-Learning
+                            ini sangat membantu dalam proses belajar mengajar di masa pandemi ini.
+                        </p>
+                    </div>
+                    <div class="col-lg-6" data-aos-delay="250" data-aos="fade-up">
+                        <div class="content ps-0 ps-lg-5">
+                            <p class="fst-italic">
+                                -
+                            </p>
+
+                            <p>
+                                -
+                            </p>
+
+                            <div class="position-relative mt-4">
+                                <img alt="" class="img-fluid rounded-4" src="{{ asset('foto2.jpeg') }}">
+                                <a class="glightbox pulsating-play-btn"
+                                    href="https://www.youtube.com/watch?v=Y7f98aduVJ8"></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+
             </div>
-          </div>
-  
-        </div>
-  
-      </section><!-- /About Section -->
+
+        </section><!-- /About Section -->
 
     </main>
 @endsection

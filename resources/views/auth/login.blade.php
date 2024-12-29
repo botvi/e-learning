@@ -4,9 +4,9 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
     <!--favicon-->
-    <link rel="icon" href="{{ asset('env') }}/500x500.webp" type="image/png" />
+    <link href="{{ asset('env') }}/500x500.webp" rel="icon" type="image/png" />
     <!--plugins-->
     <link href="{{ asset('admin') }}/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
     <link href="{{ asset('admin') }}/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
@@ -42,8 +42,8 @@
                 <div class="row align-items-center">
                     <!-- Logo -->
                     <div class="col-lg-5 text-center mb-4 mb-lg-0">
-                        <img src="{{ asset('env') }}/500x500.webp" width="250" alt="Logo Sistem Informasi RAB"
-                            class="img-fluid">
+                        <img alt="Logo Sistem Informasi RAB" class="img-fluid" src="{{ asset('foto3.jpeg') }}"
+                            width="250">
                         <p class="mt-3">
                             E-Learning adalah aplikasi atau platform yang dirancang
                             untuk membantu proses ujian secara online.
@@ -63,34 +63,34 @@
                                         <hr />
                                     </div>
                                     <div class="form-body">
-                                        <form class="row g-3" action="{{ route('login') }}" method="POST">
+                                        <form action="{{ route('login') }}" class="row g-3" method="POST">
                                             @csrf
                                             <div class="col-12">
-                                                <label for="username" class="form-label">Username</label>
-                                                <input type="text" class="form-control" name="username"
-                                                    id="username" placeholder="Username" required>
+                                                <label class="form-label" for="username">Username</label>
+                                                <input class="form-control" id="username" name="username"
+                                                    placeholder="Username" required type="text">
                                             </div>
                                             <div class="col-12">
-                                                <label for="password" class="form-label">Enter Password</label>
+                                                <label class="form-label" for="password">Enter Password</label>
                                                 <div class="input-group" id="show_hide_password">
-                                                    <input type="password" class="form-control border-end-0"
-                                                        name="password" id="password" placeholder="Enter Password"
-                                                        required>
-                                                    <a href="javascript:;" class="input-group-text bg-transparent"><i
+                                                    <input class="form-control border-end-0" id="password"
+                                                        name="password" placeholder="Enter Password" required
+                                                        type="password">
+                                                    <a class="input-group-text bg-transparent" href="javascript:;"><i
                                                             class='bx bx-hide'></i></a>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        id="flexSwitchCheckChecked" checked>
+                                                    <input checked class="form-check-input" id="flexSwitchCheckChecked"
+                                                        type="checkbox">
                                                     <label class="form-check-label"
                                                         for="flexSwitchCheckChecked">Remember Me</label>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="d-grid">
-                                                    <button type="submit" class="btn btn-primary"><i
+                                                    <button class="btn btn-primary" type="submit"><i
                                                             class="bx bxs-lock-open"></i>Sign in</button>
                                                 </div>
                                             </div>
